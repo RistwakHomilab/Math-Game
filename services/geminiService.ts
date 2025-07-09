@@ -3,11 +3,11 @@ import { GoogleGenAI } from "@google/genai";
 import { MathQuestion } from "../types";
 import { GAME_QUESTIONS_COUNT } from "../constants";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
 if (!API_KEY) {
   // This is a placeholder for development.
   // In a real deployed environment, process.env.API_KEY would be set.
-  console.error("API_KEY is not set. Please set the API_KEY environment variable.");
+  console.error("VITE_GEMINI_API_KEY is not set. Please add it to your env.");
 }
 
 const ai = new GoogleGenAI({ apiKey: API_KEY! });
