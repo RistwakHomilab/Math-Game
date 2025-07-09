@@ -3,7 +3,8 @@ import { MathQuestion } from "../types";
 import { GAME_QUESTIONS_COUNT } from "../constants";
 
 // ✅ VITE_ prefix + import.meta.env
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
+// const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 const ai = API_KEY ? new GoogleGenAI({ apiKey: API_KEY }) : null;
 
@@ -57,7 +58,7 @@ export const generateMathQuestions = async (grade: number): Promise<MathQuestion
             },
         });
         
-        const jsonStr = result.text.trim();
+        const jsonStr = (result.text ?? "").trim();
         const fenceRegex = /^```(\w*)?\s*\n?(.*?)\n?\s*```$/s;
         const match = jsonStr.match(fenceRegex);
         const contentToParse = match && match[2] ? match[2].trim() : jsonStr;

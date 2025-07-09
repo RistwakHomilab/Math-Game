@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { MathQuestion } from '../types';
 import { generateMathQuestions } from '../services/geminiService';
 import Spinner from './shared/Spinner';
-import { GAME_QUESTIONS_COUNT } from '../constants';
 
 interface GameViewProps {
   grade: number;
