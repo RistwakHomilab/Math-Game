@@ -2,7 +2,8 @@ import { GoogleGenAI, GenerateImagesResponse } from "@google/genai";
 import { MathQuestion } from "../types";
 import { GAME_QUESTIONS_COUNT } from "../constants";
 
-const API_KEY = process.env.API_KEY;
+// ✅ VITE_ prefix + import.meta.env
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string;
 
 const ai = API_KEY ? new GoogleGenAI({ apiKey: API_KEY }) : null;
 
